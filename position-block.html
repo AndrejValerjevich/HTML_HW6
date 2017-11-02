@@ -26,19 +26,6 @@
 			border: 5px solid black;
 			max-width: 700px;
 		}
-
-		.first-parent:after {
-			content: "";
-			display: block;
-			width: 100%;
-			clear: both;
-		}
-
-		.first-parent + ul:after {
-			clear: none;
-			height: 104px;
-		}
-
 		.first-child {
 			float: left;
 			border: 2px solid red;
@@ -46,6 +33,18 @@
 			height: 100px;
 		}
 
+		/*вариант 1*/
+		.var-1:after {
+			content: "";
+			display: block;
+			width: 100%;
+			clear: both;
+		}
+
+		/*вариант 2*/
+		.var-2 {
+			overflow: hidden;
+		}
 
 		/* Место для решения задания 2 */
 		.third-parent {
@@ -79,6 +78,11 @@
 		/* Место для решения дополнительного задания */
 		.fourth-parent {
 			border: 5px solid black;
+			position: relative;
+		}
+		.fourth-parent div {
+			height: 300px;
+			border: 2px solid red;
 		}
 
 		.fourth-parent:after {
@@ -88,18 +92,19 @@
 			clear: both;
 		}
 
-		.fourth-parent div {
-			height: 300px;
-			border: 2px solid red;
-		}
-
 		.fourth-left {
+			background: red;
 			width: 250px;
 			float: left;
 		}
 
 		.fourth-right {
-			width: 100%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 250px;
+			background-color: blue;
 		}
 	</style>
 </head>
@@ -110,14 +115,14 @@
 		<p>Есть два контейнера, в которых элементам задано свойство float. Из-за этого происходит выпадение этих элементов из родителя. Вы должны решить эту проблему. Для первого контейнера необходимо использовать clearfix (любая его вариация), для второго – любое другое решение.</p>
 
 		<div>
-			<ul class="first-parent">
+			<ul class="first-parent var-1">
 				<li class="first-child">1</li>
 				<li class="first-child">2</li>
 				<li class="first-child">3</li>
 				<li class="first-child">4</li>
 			</ul>
 
-			<ul class="first-parent">
+			<ul class="first-parent var-2">
 				<li class="first-child">1</li>
 				<li class="first-child">2</li>
 				<li class="first-child">3</li>
